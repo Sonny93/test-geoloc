@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import {
 	MapContainer,
 	TileLayer,
-	Marker,
 	Popup,
 	Circle,
 	useMapEvents
@@ -12,11 +11,11 @@ import toastr from "toastr";
 import "./App.scss";
 import "toastr/build/toastr.css";
 
-import { 
-	BuildGeoCodeRequest, 
-	fix, 
-	MAP_TILES_URL, 
-	SUBDOMAINS 
+import {
+	BuildGeoCodeRequest,
+	fix,
+	MAP_TILES_URL,
+	SUBDOMAINS
 } from "./utils/utils.js";
 
 export default function App() {
@@ -73,29 +72,22 @@ export default function App() {
 							Vitesse de déplacement <div className="value">{fix(speed)}</div>
 						</div>
 					)}
-					<LocationAddress 
-						position={position} 
-						address={address} 
-						setAddress={setAddress} 
+					<LocationAddress
+						position={position}
+						address={address}
+						setAddress={setAddress}
 					/>
 				</div>
 			</div>
 			<MapContainer center={position} zoom={16} className="map">
-				<TileLayer
-					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-					url={MAP_TILES_URL}
-					subdomains={SUBDOMAINS}
-				/>
-				<Circle center={position} pathOptions={{ color: "lightblue" }} radius={accuracy}>
-					<Popup>Précision d'environ {fix(accuracy)} mètre(s).</Popup>
-				</Circle>
-				<LocationMarker position={position} />
+				<TileLayer url={MAP_TILES_URL} subdomains={SUBDOMAINS} />
+				<LocationMarker position={position} accuracy={accuracy} />
 			</MapContainer>
 		</div>
 	);
 }
 
-function LocationMarker({ position }) {
+function LocationMarker({ position, accuracy }) {
 	const map = useMapEvents({
 		click: () => map.locate(),
 		locationfound: (e) => {
@@ -110,9 +102,10 @@ function LocationMarker({ position }) {
 
 	if (position) {
 		return (
-			<Marker position={position}>
-				<Popup>Vous êtes ici.</Popup>
-			</Marker>
+			<Circle center={position} pathOptions={{ color: "lightblue" }} radius={accuracy}>
+				<Popup>Précision d'environ {fix(accuracy)} mètre(s).</Popup>
+				<Circle center={position} pathOptions={{ color: "blue", stroke: true }} radius={5} />
+			</Circle>
 		);
 	} else return <></>;
 }

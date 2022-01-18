@@ -1,99 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,300;1,600&family=Roboto:ital,wght@0,300;0,500;0,700;1,300;1,500;1,700&display=swap");
+
 * {
-  box-sizing: border-box;
-  outline: none;
+	box-sizing: border-box;
+	outline: none;
 }
 
 html,
 body {
-  height: 100vh;
-  width: 100vw;
-  background: #444;
-  color: white;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	height: 100vh;
+	width: 100vw;
+	background: #444;
+	color: white;
+	font-family: "Roboto", sans-serif;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 #root {
-  height: 100%;
-  width: 100%;
+	height: 100%;
+	width: 100%;
 }
 
 .App {
-  height: 100%;
-  width: 100%;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+	height: 100%;
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 
-  & .container {
-    width: 100%;
-    color: white;
-    background: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+	& .container {
+		width: 100%;
+		color: white;
+		background: inherit;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
 
-    & .content {
-      height: fit-content;
-      width: 400px;
-      color: white;
-      display: flex;
-      flex-direction: column;
+		& .content {
+			height: fit-content;
+			width: 400px;
+			color: white;
+			display: flex;
+			flex-direction: column;
 
-      &:hover {
-        color: grey;
-        background-size: 100% 100%;
-      }
-    }
-    
-    & .content .field {
-      font-size: .9em;
-      margin-bottom: 7px;
-      display: flex;
-      justify-content: space-between;
-      flex-direction: row;
-      background: linear-gradient(
-          to top,
-          rgba(0, 255, 243, 0.5) 0%,
-          rgba(0, 255, 243, 0.5) 10%,
-          transparent 10.01%
-        )
-        no-repeat left bottom / 0 100%;
-      transition: background-size 0.5s /*cubic-bezier(0,.5,1,.5)*/ ease,
-        color 0.3s ease;
-    }
-    
-    & .content .field .value {
-      color: grey;
-      transition: 0.3s ease;
-    }
-    
-    & .content:hover .field {
-      color: grey;
-      background-size: 100% 100%;
-    }
-    
-    & .content:hover .field .value {
-      color: white;
-    }
-  }
+			&:hover {
+				color: grey;
+				background-size: 100% 100%;
+			}
+		}
 
-  & .map {
-    width: 100%;
-    flex: 1;
-  }
+		& .content .field {
+			font-size: 0.9em;
+			margin-bottom: 7px;
+			display: flex;
+			justify-content: space-between;
+			flex-direction: row;
+			background: linear-gradient(
+					to top,
+					rgba(0, 255, 243, 0.5) 0%,
+					rgba(0, 255, 243, 0.5) 10%,
+					transparent 10.01%
+				)
+				no-repeat left bottom / 0 100%;
+			transition: background-size 0.5s /*cubic-bezier(0,.5,1,.5)*/ ease, color 0.3s ease;
+		}
+
+		& .content .field .value {
+			color: grey;
+			transition: 0.3s ease;
+		}
+
+		& .content:hover .field {
+			color: grey;
+			background-size: 100% 100%;
+		}
+
+		& .content:hover .field .value {
+			color: white;
+		}
+	}
+
+	& .map {
+		width: 100%;
+		flex: 1;
+	}
 }
 
-@media (max-width: 700px) { 
-  .App .container .content {
-    width: 100%;
-  }
+@media (max-width: 700px) {
+	.App .container .content {
+		width: 100%;
+	}
 }
